@@ -1,0 +1,761 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+} 
+ 
+body { 
+    font-family: 'Rubik Dirt', cursive; 
+    background-color: #1a1a1a; 
+    color: #e5e5e5; 
+    overflow-x: hidden; 
+} 
+ 
+/* Navigation */ 
+.nav { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    height: 64px; 
+    background-color: #000000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 1rem; 
+    z-index: 1000; 
+} 
+ 
+.burger-menu { 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+    padding: 8px; 
+} 
+ 
+.burger-menu span { 
+    width: 25px; 
+    height: 3px; 
+    background-color: #e5e5e5; 
+    transition: all 0.3s ease; 
+} 
+ 
+.burger-menu.active span:nth-child(1) { 
+    transform: rotate(45deg) translate(5px, 5px); 
+} 
+ 
+.burger-menu.active span:nth-child(2) { 
+    opacity: 0; 
+} 
+ 
+.burger-menu.active span:nth-child(3) { 
+    transform: rotate(-45deg) translate(7px, -6px); 
+} 
+ 
+.logo { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+} 
+ 
+.logo img { 
+    height: 50px; 
+} 
+ 
+.lang-buttons { 
+    display: flex; 
+    gap: 8px; 
+} 
+ 
+.lang-btn { 
+    padding: 6px 12px; 
+    background-color: #2d2d2d; 
+    color: #e5e5e5; 
+    border: 1px solid #3d3d3d; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-family: 'Rubik Dirt', cursive; 
+    font-size: 12px; 
+    transition: all 0.3s ease; 
+} 
+ 
+.lang-btn:hover { 
+    background-color: #3d3d3d; 
+} 
+ 
+.lang-btn.active { 
+    background-color: #a855f7; 
+    border-color: #a855f7; 
+} 
+ 
+/* Sidebar */ 
+.sidebar { 
+    position: fixed; 
+    top: 64px; 
+    left: -300px; 
+    width: 300px; 
+    height: calc(100vh - 64px); 
+    background-color: #242424; 
+    transition: left 0.3s ease; 
+    z-index: 999; 
+    overflow-y: auto; 
+} 
+ 
+.sidebar.active { 
+    left: 0; 
+} 
+ 
+.sidebar-content { 
+    padding: 2rem 0; 
+} 
+ 
+.menu-item { 
+    display: block; 
+    padding: 1rem 2rem; 
+    color: #e5e5e5; 
+    text-decoration: none; 
+    transition: all 0.3s ease; 
+    border-left: 3px solid transparent; 
+} 
+ 
+.menu-item:hover { 
+    background-color: #2d2d2d; 
+    border-left-color: #a855f7; 
+} 
+ 
+.menu-item.active { 
+    background-color: #2d2d2d; 
+    border-left-color: #a855f7; 
+    color: #a855f7; 
+} 
+ 
+/* Hero Section */ 
+.hero { 
+    position: relative; 
+    height: calc(100vh - 64px); 
+    margin-top: 64px; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+ 
+.hero-bg { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: brightness(0.3); 
+    z-index: -1; 
+} 
+ 
+.hero-content { 
+    position: relative; 
+    z-index: 10; 
+    text-align: center; 
+    padding: 0 1rem; 
+} 
+ 
+.hero-title { 
+    font-size: clamp(3rem, 8vw, 6rem); 
+    font-weight: bold; 
+    color: white; 
+    margin-bottom: 1.5rem; 
+} 
+ 
+.hero-subtitle { 
+    font-size: clamp(1.25rem, 2vw, 1.5rem); 
+    color: #d1d5db; 
+    max-width: 48rem; 
+    margin: 0 auto; 
+} 
+ 
+/* CTA Section */ 
+.cta-section { 
+    padding: 5rem 1rem; 
+    background-color: #242424; 
+} 
+ 
+.container { 
+    max-width: 56rem; 
+    margin: 0 auto; 
+    text-align: center; 
+} 
+ 
+.cta-title { 
+    font-size: 2.25rem; 
+    font-weight: bold; 
+    color: white; 
+    margin-bottom: 1.5rem; 
+} 
+ 
+.cta-text { 
+    font-size: 1.25rem; 
+    color: #9ca3af; 
+    margin-bottom: 2rem; 
+} 
+ 
+.cta-btn { 
+    background-color: #a855f7; 
+    color: white; 
+    padding: 0.75rem 2rem; 
+    border-radius: 0.5rem; 
+    font-size: 1.125rem; 
+    font-weight: 500; 
+    border: none; 
+    cursor: pointer; 
+    font-family: 'Rubik Dirt', cursive; 
+    transition: background-color 0.3s ease; 
+} 
+ 
+.cta-btn:hover { 
+    background-color: #9333ea; 
+} 
+ 
+@media (max-width: 768px) { 
+    .hero-title { 
+        font-size: 3rem; 
+    } 
+     
+    .hero-subtitle { 
+        font-size: 1.25rem; 
+    } 
+     
+    .cta-title { 
+        font-size: 1.875rem; 
+    } 
+} 
+ 
+/* ---------- PROJECTS SECTION (UPDATED WITH BACKGROUND) ---------- */ 
+.projects-section { 
+    position: relative; 
+    padding: 5rem 1rem; 
+    background: url("https://i.pinimg.com/1200x/3f/80/58/3f80584bc6e4ca565a963c495ddf5a07.jpg") no-repeat center center; 
+    background-size: cover; 
+} 
+ 
+.projects-title { 
+    text-align: center; 
+    font-size: 2.5rem; 
+    color: white; 
+    font-weight: bold; 
+    margin-bottom: 3rem; 
+} 
+ 
+.projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2rem; 
+} 
+ 
+.project-card { 
+    background-color: #242424; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    padding-bottom: 2.5rem; 
+    position: relative; 
+    transition: transform 0.3s ease; 
+} 
+ 
+.project-card:hover { 
+    transform: translateY(-5px); 
+} 
+ 
+.project-img { 
+    width: 100%; 
+    height: 180px; 
+    overflow: hidden; 
+} 
+ 
+.project-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+} 
+ 
+.project-name { 
+    margin: 1rem; 
+    font-size: 1.3rem; 
+    color: #fff; 
+} 
+ 
+.project-desc { 
+    margin: 0 1rem; 
+    color: #b3b3b3; 
+    font-size: 1rem; 
+} 
+ 
+.project-btn { 
+    position: absolute; 
+    bottom: 1rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: #a855f7; 
+    color: white; 
+    border: none; 
+    padding: 0.6rem 1.5rem; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-family: 'Rubik Dirt', cursive; 
+    transition: 0.3s ease; 
+    opacity: 0; 
+    pointer-events: none; 
+} 
+ 
+.project-card:hover .project-btn { 
+    opacity: 1; 
+    pointer-events: auto; 
+} 
+ 
+.project-btn:hover { 
+    background-color: white; 
+    color: #a855f7; 
+} 
+ 
+ 
+/* НЕОНОВАЯ ФИОЛЕТОВАЯ РАМКА ПРИ ХОВЕРЕ */ 
+.project-card { 
+    background-color: #242424; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    padding-bottom: 2.5rem; 
+    position: relative; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
+    border: 2px solid transparent; 
+} 
+ 
+.project-card:hover { 
+    transform: translateY(-5px); 
+    border-color: #b266ff; /* Фиолетовая рамка */ 
+    box-shadow: 0 0 20px #b266ff, 0 0 40px #b266ff; /* Неоновое свечение */ 
+} 
+ 
+ 
+/* АНИМАЦИЯ ПЕРЕЛИВА HERO TITLE */ 
+@keyframes heroTitleGlow { 
+    0% { 
+        color: #ffffff; 
+        text-shadow: 0 0 10px #ffb3b3; 
+    } 
+    50% { 
+        color: #ffd6d6; /* светло-красный */ 
+        text-shadow: 0 0 25px #ff8a8a; 
+    } 
+    100% { 
+        color: #ffffff; 
+        text-shadow: 0 0 10px #ffb3b3; 
+    } 
+} 
+ 
+.hero-title { 
+    animation: heroTitleGlow 3s infinite ease-in-out; 
+} 
+ 
+ 
+/* КНОПКА CTA ПЕРЕЛИВ ПРИ ХОВЕРЕ */ 
+@keyframes ctaButtonGlow { 
+    0% { 
+        background-color: #a855f7; /* розовый-фиолетовый */ 
+    } 
+    50% { 
+        background-color: #ff6b6b; /* светло-красный */ 
+    } 
+    100% { 
+        background-color: #a855f7; 
+    } 
+} 
+ 
+.cta-btn:hover { 
+    animation: ctaButtonGlow 2s infinite ease-in-out; 
+} 
+ 
+/* Анимация неоновой рамки: фиолетовый ↔ розовый */ 
+@keyframes neonBorder { 
+    0% { 
+        border-color: #a855f7; 
+        box-shadow: 0 0 10px #a855f7; 
+    } 
+    50% { 
+        border-color: #ff7bff; 
+        box-shadow: 0 0 20px #ff7bff; 
+    } 
+    100% { 
+        border-color: #a855f7; 
+        box-shadow: 0 0 10px #a855f7; 
+    } 
+} 
+ 
+/* Основная кнопка (ты не меняешь) */ 
+.cta-btn { 
+    background-color: #a855f7; 
+    color: white; 
+    padding: 0.75rem 2rem; 
+    border-radius: 0.5rem; 
+    font-size: 1.125rem; 
+    font-weight: 500; 
+    border: 2px solid transparent; 
+    cursor: pointer; 
+    font-family: 'Rubik Dirt', cursive; 
+    transition: all 0.25s ease; 
+} 
+ 
+/* Ховер — белая, растёт и появляется неоновая рамка */ 
+.cta-btn:hover { 
+    color: black; 
+    background-color: white; 
+    transform: scale(1.07); 
+    animation: neonBorder 2s infinite ease-in-out; 
+} 
+ 
+ 
+/* Чтобы кнопки языка всегда были видны */ 
+.lang-buttons { 
+    display: flex; 
+    gap: 8px; 
+    position: absolute; 
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    z-index: 2000; /* поверх всего */ 
+} 
+ 
+/* Кнопки языка не должны уменьшаться */ 
+.lang-btn { 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+} 
+ 
+/* На маленьких экранах кнопки уменьшаем слегка, но не скрываем */ 
+@media (max-width: 420px) { 
+    .lang-btn { 
+        padding: 4px 8px; 
+        font-size: 10px; 
+    } 
+} 
+ 
+/* Чтобы логотип не перекрывал кнопки языка */ 
+.logo { 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1000; 
+} 
+
+.scroll-headers {
+    position: relative;
+    padding: 200px 0;
+    overflow: hidden;
+    background: url('https://i.pinimg.com/1200x/2e/ef/f4/2eeff440a3f21cc647d6d5b99e33a4c0.jpg') center/cover no-repeat;
+}
+
+.header-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 100px 0;
+}
+
+.header-row h2 {
+    white-space: nowrap;
+    font-size: 3rem;
+    transform: translateX(0);
+    /* Цветовая анимация */
+    background: linear-gradient(90deg, #fff, #ff5757, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorShift 3s infinite ease-in-out;
+}
+
+/* Анимация перелива цвета */
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header-row h2 {
+    background-size: 200% 100%;
+}
+
+/* Анимация перелива цвета */
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header-row h2 {
+    background-size: 200% 100%;
+}
+
+.cta-btn-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #0088cc;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.telegram-btn img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.1);
+    background-color: #00aaff;
+}
+
+.telegram-btn:hover img {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+.tg-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    padding: 12px 18px;
+    background: #0088cc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.tg-btn img {
+    width: 28px;
+    height: 28px;
+}
+
+.tg-btn:hover {
+    background: #0077b5;
+    transform: translateY(-3px);
+}
+
+
+
+
+/* --- Секция с проектами (изолированные стили) --- */
+.pm-section {
+    position: relative;
+    padding: 60px 0;
+    overflow: hidden; /* Важно, чтобы скролл не ломал страницу */
+    background-color: transparent; /* Или цвет вашего фона */
+}
+
+.pm-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+/* Контейнер для бегущей строки */
+.pm-slider-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* Сама лента */
+.pm-track {
+    display: inline-flex;
+    gap: 30px; /* Отступ между карточками */
+    animation: pm-scroll 20s linear infinite;
+    will-change: transform;
+}
+
+/* Остановка анимации при наведении на ЛЕНТУ */
+.pm-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes pm-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Сдвиг на 50%, так как контент дублирован */
+}
+
+/* --- Карточка --- */
+.pm-card {
+    width: 300px;
+    height: 350px; /* Фиксированная высота */
+    background-color: #333333; /* Серый фон */
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #444;
+    transition: all 0.4s ease;
+    white-space: normal; /* Чтобы текст внутри переносился */
+    position: relative;
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.pm-card h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Ховер эффект карточки (Неоновый фиолетовый) */
+.pm-card:hover {
+    box-shadow: 0 0 15px #bd93f9, 0 0 30px #bd93f9, inset 0 0 10px rgba(189, 147, 249, 0.2);
+    border-color: #bd93f9;
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* --- Кнопка "Подробнее" --- */
+.pm-btn-details {
+    background-color: #bd93f9; /* Светло-фиолетовый */
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative; /* Важно! */
+    z-index: 20;        /* Поднимаем кнопку над карточкой */
+    pointer-events: auto; /* Разрешаем клики принудительно */
+}
+
+.pm-btn-details:hover {
+    transform: scale(1.15); /* Увеличение */
+    filter: brightness(1.2); /* Яркость */
+    box-shadow: 0 0 15px rgba(189, 147, 249, 0.8);
+}
+
+/* --- Модальные окна (изолированные) --- */
+.pm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85); /* Затемнение фона сайта */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Поверх всего сайта */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.pm-modal-overlay.pm-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pm-modal-content {
+    width: 500px;
+    max-width: 90%;
+    /* Ваш фон */
+    background-image: url('https://i.pinimg.com/1200x/60/05/ed/6005ed47f0528befc7287cf71641d91d.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+}
+
+/* Подложка внутри модалки, чтобы текст читался на фоне космоса */
+.pm-modal-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.pm-modal-content h2 {
+    margin-top: 0;
+    color: #bd93f9;
+    font-size: 2rem;
+}
+
+.pm-modal-content p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Крестик закрытия */
+.pm-close-icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 5;
+    line-height: 1;
+}
+
+.pm-close-icon:hover {
+    color: #bd93f9;
+    transform: rotate(90deg);
+}
+
+/* Кнопка Телеграм */
+.pm-tg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2AABEE; /* Telegram color */
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pm-tg-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(42, 171, 238, 0.4);
+}
+
+.pm-tg-link svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
